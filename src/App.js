@@ -1,19 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/navBar';
+//import SearchBar from './components/searchBar';
+import PlayerList from './components/playerList';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      players: []
+    };
+  }
+  componentDidMount() {
+    fetch(
+      'https://api.mysportsfeeds.com/v2.0/pull/nfl/players.json?season=current&limit=50',
+      {
+        headers: new Headers({
+          Authorization: `Basic ZWE0YjU1YzctZDc4My00ODRhLThjNmQtNTliN2ViOk1ZU1BPUlRTRkVFRFM=`
+        })
+      }
+    )
+      .then(results => {
+        return results.json();
+      })
+      .then(data => {
+        this.setState({ players: data.players });
+      });
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <React.Fragment>
+        <NavBar />
+        <main className="container">
+          {/* <SearchBar /> */}
+          <PlayerList players={this.state.players} />
+        </main>
+      </React.Fragment>
     );
   }
 }
