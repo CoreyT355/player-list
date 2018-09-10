@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-//import ReactImageFallback from 'react-image-fallback';
 
 class PlayerCard extends Component {
   render() {
     return (
       <div className="col-lg-4 col-md-6 col-12">
         <div className="card shadow bg-light m-3">
-          {/* <ReactImageFallback
-            src={this.props.player.officialImageSrc}
-            fallbackImage="https://picsum.photos/200"
-            alt="player"
-            className="card-img-top"
-          /> */}
           <div className="card-body">
             <div>
               <h5 className="card-title">

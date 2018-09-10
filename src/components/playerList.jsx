@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
+import Pagination from './pagination';
 import PlayerCard from './playerCard';
 
 class PlayerList extends Component {
-  state = {};
   render() {
     const { players } = this.props;
     return (
-      <div className="row">
-        {players.map(player => (
-          <PlayerCard key={player.player.id} player={player.player} />
-        ))}
-      </div>
+      <React.Fragment>
+        <div className="row">
+          {players.map(player => (
+            <PlayerCard key={player.player.id} player={player.player} />
+          ))}
+        </div>
+        <div className="row justify-content-center">
+          <Pagination />
+        </div>
+      </React.Fragment>
     );
   }
 }
