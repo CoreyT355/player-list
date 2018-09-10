@@ -7,7 +7,7 @@ let SearchBar = props => {
     <div className="row mt-2">
       <div className="col-12">
         <div className="card">
-          <div className="row justify-content-center">
+          <div className="row justify-content-center mt-2">
             <div className="col-6">
               <form onSubmit={handleSubmit}>
                 <div className="row form-group">
