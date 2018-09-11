@@ -14,7 +14,7 @@ export default function reduce(state = initialState, action = {}) {
 
     case PLAYERS_FILTERED:
       return state.merge({
-        playerFilter: action.playerFilter
+        filteredPlayers: action.filteredPlayers
       });
 
     default:
@@ -24,6 +24,10 @@ export default function reduce(state = initialState, action = {}) {
 
 export function getPlayerFilter(state) {
   return state.playerFilter;
+}
+
+export function getFilteredPlayers(state) {
+  return state.filteredPlayers;
 }
 
 export function getPlayers(state) {

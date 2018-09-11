@@ -23,14 +23,16 @@ export function setPlayerFilter(filter) {
   };
 }
 
-export function filterPlayers() {
+export function filterPlayers(filter) {
   return (dispatch, getState) => {
-    const filter = playersSelectors.getPlayerFilter(getState());
     let players = playersSelectors.getPlayers(getState());
-    const filteredPlayers = players.players.filter(
-      p => p.player.lastName.indexOf(filter) > -1
-    );
-    console.log('FILTERED PLAYERS', filteredPlayers);
-    dispatch({ type: types.PLAYERS_FILTERED, filteredPlayers });
+    if (!filter) {
+      dispatch({ type: types.PLAYERS_FILTERED, players });
+    } else {
+      const filteredPlayers = players.players.filter(p =>
+        p.player.lastName.toLowerCase().includes(filter.toLowerCase())
+      );
+      dispatch({ type: types.PLAYERS_FILTERED, filteredPlayers });
+    }
   };
 }

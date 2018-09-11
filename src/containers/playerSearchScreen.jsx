@@ -20,7 +20,9 @@ class PlayerSearchScreen extends Component {
       <React.Fragment>
         <SearchBar onSubmit={this.handlePlayerSearch} />
         {this.props.players.players
-          ? this.renderPlayerList(this.props.players.players)
+          ? this.renderPlayerList(
+              this.props.players.filteredPlayers || this.props.players.players
+            )
           : this.renderLoading()}
       </React.Fragment>
     );
