@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import MsfService from '../../services/mySportsFeed';
+import * as playersSelectors from './reducer';
 
 export function receivePlayers(players) {
   return { type: types.PLAYERS_FETCHED, players };
@@ -16,8 +17,20 @@ export function fetchPlayers(query) {
   };
 }
 
-export function setSearchQuery(query) {
+export function setPlayerFilter(filter) {
   return (dispatch, getState) => {
-    dispatch({ type: types.PLAYERS_SEARCHED, playerSearchQuery: query });
+    dispatch({ type: types.PLAYERS_FILTER, playerFilter: filter });
+  };
+}
+
+export function filterPlayers() {
+  return (dispatch, getState) => {
+    const filter = playersSelectors.getPlayerFilter(getState());
+    let players = playersSelectors.getPlayers(getState());
+    const filteredPlayers = players.players.filter(
+      p => p.player.lastName.indexOf(filter) > -1
+    );
+    console.log('FILTERED PLAYERS', filteredPlayers);
+    dispatch({ type: types.PLAYERS_FILTERED, filteredPlayers });
   };
 }

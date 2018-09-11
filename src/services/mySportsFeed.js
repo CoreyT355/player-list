@@ -2,7 +2,7 @@ const MSF_BASE_URL = 'https://api.mysportsfeeds.com/v2.0';
 
 class MsfService {
   async getPlayerSearchResults(query, limit = 9, offset = 0) {
-    let url = `${MSF_BASE_URL}/pull/nfl/players.json?season=current&limit=${limit}&offset=${offset}`;
+    let url = `${MSF_BASE_URL}/pull/nfl/players.json?season=current`;
     if (query) {
       url += `&player=${query}`;
     }

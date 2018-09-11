@@ -1,9 +1,5 @@
 import initialState from '../initialState';
-import {
-  PLAYERS_FETCHED,
-  PLAYERS_SEARCHED,
-  PLAYERS_FILTERED
-} from '../players/actionTypes';
+import { PLAYERS_FETCHED, PLAYERS_SEARCHED } from '../players/actionTypes';
 
 export default function reduce(state = initialState, action = {}) {
   switch (action.type) {
@@ -11,10 +7,9 @@ export default function reduce(state = initialState, action = {}) {
       return state.merge({
         players: action.players
       });
-
-    case PLAYERS_FILTERED:
+    case PLAYERS_SEARCHED:
       return state.merge({
-        playerFilter: action.playerFilter
+        playerSearchQuery: action.playerSearchQuery
       });
 
     default:
@@ -22,8 +17,8 @@ export default function reduce(state = initialState, action = {}) {
   }
 }
 
-export function getPlayerFilter(state) {
-  return state.playerFilter;
+export function getPlayerSearchQuery(state) {
+  return state.playerSearchQuery;
 }
 
 export function getPlayers(state) {

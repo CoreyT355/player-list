@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 let SearchBar = props => {
   const { handleSubmit } = props;
@@ -18,8 +19,8 @@ let SearchBar = props => {
                     className="form-control col-8"
                     placeholder="Last Name.."
                   />
-                  <button className="btn btn-sm btn-primary ml-2" type="submit">
-                    Search
+                  <button className="btn btn-sm btn-info ml-2" type="submit">
+                    <FontAwesomeIcon icon="search" />
                   </button>
                 </div>
               </form>

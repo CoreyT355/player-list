@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Pagination extends Component {
   render() {
@@ -7,7 +8,7 @@ class Pagination extends Component {
         <ul className="pagination">
           <li className="page-item">
             <a className="page-link" href="#">
-              Previous
+              <FontAwesomeIcon icon="angle-double-left" />
             </a>
           </li>
           <li className="page-item">
@@ -27,7 +28,7 @@ class Pagination extends Component {
           </li>
           <li className="page-item">
             <a className="page-link" href="#">
-              Next
+              <FontAwesomeIcon icon="angle-double-right" />
             </a>
           </li>
         </ul>

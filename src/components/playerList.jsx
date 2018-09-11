@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Pagination from './pagination';
+//import Pagination from '../containers/pagination';
 import PlayerCard from './playerCard';
 
 class PlayerList extends Component {
@@ -12,9 +12,9 @@ class PlayerList extends Component {
             <PlayerCard key={player.player.id} player={player.player} />
           ))}
         </div>
-        <div className="row justify-content-center">
+        {/* <div className="row justify-content-center">
           <Pagination />
-        </div>
+        </div> */}
       </React.Fragment>
     );
   }

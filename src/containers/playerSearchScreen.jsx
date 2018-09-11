@@ -4,6 +4,7 @@ import * as playerActions from '../store/players/actions';
 import * as playerSelectors from '../store/players/reducer';
 import PlayerList from '../components/playerList';
 import SearchBar from '../containers/searchBar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class PlayerSearchScreen extends Component {
   componentDidMount() {
@@ -11,7 +12,7 @@ class PlayerSearchScreen extends Component {
   }
 
   handlePlayerSearch = values => {
-    this.props.dispatch(playerActions.fetchPlayers(values.searchQuery));
+    this.props.dispatch(playerActions.filterPlayers(values.searchQuery));
   };
 
   render() {
@@ -25,7 +26,11 @@ class PlayerSearchScreen extends Component {
     );
   }
   renderLoading() {
-    return <p>Loading...</p>;
+    return (
+      <div className="row justify-content-center mt-5">
+        <FontAwesomeIcon icon="football-ball" size="6x" spin />
+      </div>
+    );
   }
   renderPlayerList(players) {
     return <PlayerList players={players} />;
