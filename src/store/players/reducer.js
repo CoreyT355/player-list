@@ -1,9 +1,5 @@
 import initialState from '../initialState';
-import {
-  PLAYERS_FETCHED,
-  PLAYERS_SEARCHED,
-  PLAYERS_FILTERED
-} from '../players/actionTypes';
+import { PLAYERS_FETCHED, PLAYERS_FILTERED } from '../players/actionTypes';
 
 export default function reduce(state = initialState, action = {}) {
   switch (action.type) {
@@ -12,10 +8,14 @@ export default function reduce(state = initialState, action = {}) {
         players: action.players
       });
 
-    case PLAYERS_FILTERED:
-      return state.merge({
-        playerFilter: action.playerFilter
-      });
+    // case PLAYERS_FILTERED:
+    //   console.log('PLAYERS', state.players);
+    //   const filteredPlayers = state.players.filter(
+    //     p => p.player.lastName === action.playerFilter
+    //   );
+    //   return state.merge({
+    //     filteredPlayers: filteredPlayers
+    //   });
 
     default:
       return state;
@@ -24,6 +24,10 @@ export default function reduce(state = initialState, action = {}) {
 
 export function getPlayerFilter(state) {
   return state.playerFilter;
+}
+
+export function getFilteredPlayers(state) {
+  return state.filteredPlayers;
 }
 
 export function getPlayers(state) {

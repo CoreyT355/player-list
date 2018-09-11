@@ -23,14 +23,14 @@ export function setPlayerFilter(filter) {
   };
 }
 
-export function filterPlayers() {
-  return (dispatch, getState) => {
-    const filter = playersSelectors.getPlayerFilter(getState());
-    let players = playersSelectors.getPlayers(getState());
-    const filteredPlayers = players.players.filter(
-      p => p.player.lastName.indexOf(filter) > -1
-    );
-    console.log('FILTERED PLAYERS', filteredPlayers);
-    dispatch({ type: types.PLAYERS_FILTERED, filteredPlayers });
-  };
-}
+// export function filterPlayers() {
+//   return (dispatch, getState) => {
+//     const filter = playersSelectors.getPlayerFilter(getState());
+//     let players = playersSelectors.getPlayers(getState());
+//     const filteredPlayers = players.players.filter(
+//       p => p.player.lastName.indexOf(filter) > -1
+//     );
+//     console.log('FILTERED PLAYERS', filteredPlayers);
+//     dispatch({ type: types.PLAYERS_FILTERED, filteredPlayers });
+//   };
+// }

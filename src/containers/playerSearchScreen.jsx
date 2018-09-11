@@ -5,14 +5,31 @@ import * as playerSelectors from '../store/players/reducer';
 import PlayerList from '../components/playerList';
 import SearchBar from '../containers/searchBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as _ from 'lodash';
 
 class PlayerSearchScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filteredPlayers: this.props.players
+    };
+  }
+
   componentDidMount() {
     this.props.dispatch(playerActions.fetchPlayers());
   }
 
-  handlePlayerSearch = values => {
-    this.props.dispatch(playerActions.filterPlayers(values.searchQuery));
+  handlePlayerSearch = event => {
+    //this.props.dispatch(playerActions.filterPlayers(values.searchQuery));
+    console.log('STATE', this.state);
+    console.log('EVENT', event);
+    const filteredPlayers = _.filter(
+      playerSelectors.getPlayers(this.state),
+      p => p.player.lastName === event.searchQuery
+    );
+    this.setState({
+      filteredPlayers
+    });
   };
 
   render() {
@@ -37,7 +54,9 @@ class PlayerSearchScreen extends Component {
   }
 }
 function mapStateToProps(state) {
-  return { players: playerSelectors.getPlayers(state) };
+  return {
+    players: playerSelectors.getPlayers(state)
+  };
 }
 
 export default connect(mapStateToProps)(PlayerSearchScreen);

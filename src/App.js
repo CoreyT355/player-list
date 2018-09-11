@@ -3,7 +3,6 @@ import './App.css';
 import NavBar from './components/navBar';
 import PlayerSearchScreen from './containers/playerSearchScreen';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
