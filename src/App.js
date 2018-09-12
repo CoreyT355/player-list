@@ -3,15 +3,21 @@ import './App.css';
 import NavBar from './components/navBar';
 import PlayerSearchScreen from './containers/playerSearchScreen';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
   faSearch,
-  faFootballBall
+  faFootballBall,
+  faTimes
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faAngleDoubleLeft, faAngleDoubleRight, faSearch, faFootballBall);
+library.add(
+  faAngleDoubleLeft,
+  faAngleDoubleRight,
+  faSearch,
+  faFootballBall,
+  faTimes
+);
 
 class App extends Component {
   render() {

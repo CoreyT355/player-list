@@ -15,10 +15,17 @@ class PlayerSearchScreen extends Component {
     this.props.dispatch(playerActions.filterPlayers(values.searchQuery));
   };
 
+  handleReset = values => {
+    this.props.dispatch(playerActions.filterPlayers(''));
+  };
+
   render() {
     return (
       <React.Fragment>
-        <SearchBar onSubmit={this.handlePlayerSearch} />
+        <SearchBar
+          onSubmit={this.handlePlayerSearch}
+          onReset={this.handleReset}
+        />
         {this.props.players.players
           ? this.renderPlayerList(
               this.props.players.filteredPlayers || this.props.players.players

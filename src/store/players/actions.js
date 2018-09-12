@@ -7,19 +7,13 @@ export function receivePlayers(players) {
 }
 
 export function fetchPlayers(query) {
-  return async (dispatch, getState) => {
+  return async dispatch => {
     try {
       const players = await MsfService.getPlayerSearchResults(query);
       dispatch(receivePlayers(players));
     } catch (error) {
       console.error(error);
     }
-  };
-}
-
-export function setPlayerFilter(filter) {
-  return (dispatch, getState) => {
-    dispatch({ type: types.PLAYERS_FILTER, playerFilter: filter });
   };
 }
 
