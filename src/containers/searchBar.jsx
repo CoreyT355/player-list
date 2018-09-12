@@ -19,13 +19,37 @@ let SearchBar = props => {
                     className="form-control col-9"
                     placeholder="Last Name.."
                   />
-                  <button
-                    className="btn btn-sm btn-info ml-2"
-                    title="search"
-                    type="submit"
+                  <div className="btn-group" role="group">
+                    <button
+                      className="btn btn-sm btn-info ml-2"
+                      title="search"
+                      type="submit"
+                    >
+                      <FontAwesomeIcon icon="search" />
+                    </button>
+                    <button
+                      className="btn btn-sm btn-danger"
+                      title="reset"
+                      type="reset"
+                    >
+                      <FontAwesomeIcon icon="times" />
+                    </button>
+                  </div>
+                </div>
+                <div className="row form-group">
+                  <Field
+                    name="filterType"
+                    component="select"
+                    className="form-control col-12"
                   >
-                    <FontAwesomeIcon icon="search" />
-                  </button>
+                    <option value="" selected disabled hidden>
+                      Filter By:
+                    </option>
+                    <option value="lastName">Last Name</option>
+                    <option value="firstName">First Name</option>
+                    <option value="position">Position</option>
+                    <option value="number">Number</option>
+                  </Field>
                 </div>
               </form>
             </div>

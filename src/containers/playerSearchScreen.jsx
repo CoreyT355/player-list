@@ -8,15 +8,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class PlayerSearchScreen extends Component {
   componentDidMount() {
-    this.props.dispatch(playerActions.fetchPlayers());
+    this.props.fetchPlayers;
   }
 
   handlePlayerSearch = values => {
-    this.props.dispatch(playerActions.filterPlayers(values.searchQuery));
+    this.props.filterPlayers(values.searchQuery);
   };
 
-  handleReset = values => {
-    this.props.dispatch(playerActions.filterPlayers(''));
+  handleReset = () => {
+    this.props.filterPlayers('');
   };
 
   render() {
@@ -45,8 +45,21 @@ class PlayerSearchScreen extends Component {
     return <PlayerList players={players} />;
   }
 }
-function mapStateToProps(state) {
-  return { players: playerSelectors.getPlayers(state) };
-}
+const mapStateToProps = state => {
+  return {
+    players: playerSelectors.getPlayers(state),
+    filteredPlayers: playerSelectors.getFilteredPlayers(state)
+  };
+};
 
-export default connect(mapStateToProps)(PlayerSearchScreen);
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchPlayers: dispatch(playerActions.fetchPlayers()),
+    filterPlayers: filter => dispatch(playerActions.filterPlayers(filter))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PlayerSearchScreen);
